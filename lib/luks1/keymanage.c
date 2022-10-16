@@ -196,7 +196,7 @@ static int LUKS_check_keyslots(struct crypt_device *ctx, const struct luks_phdr 
 		}
 	}
 	/* do not check last keyslot on purpose, it must be tested in device size check */
-    fprintf(stderr, "keys valid");
+
 	return 0;
 }
 

@@ -133,7 +133,9 @@ make -j fuzz-targets
 
 for fuzzer in $ENABLED_FUZZERS; do
     cp tests/fuzz/$fuzzer $OUT
-    cp $SRC/cryptsetup_fuzzing/${fuzzer}_seed_corpus.zip $OUT
+    if [ -e $SRC/cryptsetup_fuzzing/${fuzzer}_seed_corpus.zip ]; then
+      cp $SRC/cryptsetup_fuzzing/${fuzzer}_seed_corpus.zip $OUT
+    fi
 
     # optionally copy the dictionary if it exists
     if [ -e tests/fuzz/${fuzzer}.dict ]; then
