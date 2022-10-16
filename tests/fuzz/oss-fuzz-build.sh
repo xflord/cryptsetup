@@ -29,7 +29,7 @@ export CFLAGS="${CFLAGS:-$flags} -I$DEPS_PATH/include"
 export CXXFLAGS="${CXXFLAGS:-$flags} -I$DEPS_PATH/include"
 export LDFLAGS="$LDFLAGS -L$DEPS_PATH/lib"
 
-ENABLED_FUZZERS="crypt2_load_fuzz crypt2_load_proto_plain_json_fuzz"
+ENABLED_FUZZERS="crypt2_load_fuzz crypt2_load_fuzz_LUKS1 crypt2_load_proto_plain_json_fuzz"
 
 mkdir -p $SRC
 mkdir -p $OUT
@@ -49,7 +49,7 @@ in_oss_fuzz && apt-get update && apt-get install -y \
 [ ! -d libprotobuf-mutator ] && git clone --depth 1 https://github.com/google/libprotobuf-mutator.git
 [ ! -d openssl ]    && git clone --depth 1 https://github.com/openssl/openssl
 [ ! -d util-linux ] && git clone --depth 1 https://github.com/util-linux/util-linux
-[ ! -d cryptsetup_fuzzing ] && git clone --depth 1 https://gitlab.com/cryptsetup/cryptsetup_fuzzing.git
+[ ! -d cryptsetup_fuzzing ] && git clone --depth 1 https://gitlab.com/xflord/cryptsetup_fuzzing.git
 
 cd openssl
 ./Configure -static --prefix="$DEPS_PATH" --libdir=lib no-asm
